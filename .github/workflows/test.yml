@@ -28,6 +28,7 @@ jobs:
     needs: vars
     runs-on: ubuntu-24.04
     name: ubuntu / ${{ matrix.toolchain }}
+    timeout-minutes: 30
     strategy:
       matrix:
         toolchain: ["${{ needs.vars.outputs.nightly }}"]
@@ -61,6 +62,7 @@ jobs:
         toolchain: ["${{ needs.vars.outputs.nightly }}"]
     runs-on: ubuntu-24.04
     name: ubuntu / ${{ matrix.toolchain }} / direct-minimal-versions
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -81,6 +83,7 @@ jobs:
     needs: vars
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }} / ${{ matrix.toolchain }}
+    timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
